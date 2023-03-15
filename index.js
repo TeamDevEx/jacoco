@@ -14,11 +14,11 @@ xml2js.parseString(jacocoXML, (err, result) => {
   } else {
     const subject = result.report.counter;
 
-    for (const x of subject) {
+    for (const jacoco_counter of subject) {
       const obj = {
-        type: x.$.type,
-        missed: x.$.missed,
-        covered: x.$.covered,
+        type: jacoco_counter.$.type,
+        missed: jacoco_counter.$.missed,
+        covered: jacoco_counter.$.covered,
       };
 
       jacoco_json.push(obj);
@@ -36,6 +36,6 @@ jacoco_json.forEach((counter) => {
   });
 });
 
-const xmlString = root.toString({ pretty: true });
+const converted_jacoco_json = root.toString({ pretty: true });
 
-console.log(xmlString);
+console.log(converted_jacoco_json);
